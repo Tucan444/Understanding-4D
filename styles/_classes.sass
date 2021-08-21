@@ -1,0 +1,55 @@
+@import ./_variables
+@import ./_mixins
+
+.title
+    text-align: center
+    margin-top: 2%
+    margin-bottom: 2%
+    font-size: 60px
+    width: 100%
+    color: $text_color_0
+
+.a 
+    margin: 0% 5% 5% 5%
+    padding: 2%
+    border-radius: 10px
+    background-color: $primary_light 
+    box-shadow:: 5px 5px 12px #141414
+
+.normal_text
+    @include normal_text
+    background-color: $primary_light
+
+.highlight_text
+    @include highlight_text
+    background-color: $primary_light
+
+.mtop
+    margin-top: $mtop
+
+.mleft
+    margin-left: $mleft
+
+.normal_image
+    margin-top: $mtop + $image_margins_size
+    margin-bottom: $image_margins_size
+    box-shadow: 10px 10px 24px #111
+
+.normal_video
+    margin-top: $mtop + $video_margins_size
+    margin-bottom: $video_margins_size
+    box-shadow: 10px 10px 24px #111
+
+.row
+    margin-top: $mtop
+    display: flex
+    justify-content: space-around
+    flex-direction: row
+    border-radius: 10px
+
+.spline_scene
+    margin-top: $mtop + $spline_scene_margins_size
+    margin-bottom: $spline_scene_margins_size
+    box-shadow: 10px 10px 24px #111
+    width: 1000px
+    height: 600px

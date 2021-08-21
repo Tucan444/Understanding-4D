@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles/style.css"/>
+    <script src="libraries/jquery-3.6.0.min.js"></script>
+    <title>Understanding 4D</title>
+</head>
+<body>
+    <header>
+        <nav></nav>
+    </header>
+
+    <p class="title"><strong>Understanding 4D</strong></p>
+
+    <div class="a">
+        <span class="highlight_text">0. Introduction</span> <br/>
+
+        <p class="normal_text mtop">
+            Hello, I am Tucan. <br/>
+            In this course I will be explaining some ways of how to
+            think about 4D and then explain rotations of a 4D object that kinda looks like a donut. There will be a lot of interactive stuff so look forward to that. <br/>
+            Intuition is all you'll need.
+        </p>
+    </div>
+
+    <div class="a">
+        <p class="normal_text">
+            Also please download
+            <a href="./desktop app/Understanding 4D.zip" class="normal_text" download>this application.</a>  
+            (<a href="https://drive.google.com/file/d/1iRUxC5VLrMRLLMBHvf7_ZTHKjQovYyPa/view?usp=sharing" class="normal_text" download>source code</a>)<br/>
+            It contains several scenes that will be useful in our explanation. <br/>
+            You can continue without the app if you want to. <br/>
+            There will be screenshots of the scenes, but they won't be interactive.
+        </p>
+    </div>
+
+    <div class="a">
+        <span class="highlight_text">1. What are we going to see?</span>
+
+        <p class="normal_text mtop">
+            Before we look at 4D and try understanding it, we need to know what are we going to be seeing and how. <br/>
+            To answer that, first let's look at what person in 1D would see.
+        </p>
+
+        <img src="./images/1d.png" class="normal_image"/>
+
+        <p class="normal_text mtop">
+            Person in 1D would see 1 piece of information or 0D.  <br/>
+            Now let's look what happens in 2D. (use slider to move the points around)
+        </p>
+
+        <canvas class="c" width=1100px height=360px></canvas>
+
+        <p class="normal_text mtop">
+            As we saw above person in 2D would see a line or section of 1D. <br/>
+            Let's continue to 3D.
+        </p>
+
+        <img src="./images/3d.png" class="normal_image"/>
+
+        <p class="normal_text mtop">
+            In 3D we see section of 2D. As shown on the image, by projecting onto 2D surface we get rid of z coordinates. <br/>
+            Now let's look what would a person in 4D see.
+        </p>
+
+        <img src="./images/4d.png" class="normal_image"/>
+
+        <p class="normal_text mtop">
+            Every time we had person in some dimension what he saw was section of lower dimension. <br/>
+            For example we live in 3D but see 2D. Similarly, a person in 4D would see 3D. <br/>
+            But we can't see 3D space like person in 4D. <br/>
+            For us, we need to project again, 3D => 2D. <br/>
+            Then we can see 2D section that we end up with.<br/>
+            Let me give you example of projecting twice. 3D => 2D => 1D
+        </p>
+
+        <img src="./images/projectingTwiceFrom3D.png" class="normal_image"/>
+
+        <p class="normal_text mtop">
+            Now, let's move onto our case 4D => 3D => 2D.
+            We'll ignore 4D person for less confusion.
+        </p>
+
+        <img src="./images/projectingTwiceFrom4D.png" class="normal_image"/>
+
+        <p class="normal_text mtop">
+            By projecting twice we get something that we can see. <br/>
+        </p>
+    </div>
+
+    <div class="a">
+        <span class="highlight_text">2. Visualizing w axis using color</span>
+
+        <p class="normal_text mtop">
+            Before we do w axis let's try visualizing z axis with color in 2D. <br/>
+            To do that we can use heightmaps. In heightmaps color is used to indicate height.<br/>
+            Below we have 3D surface on the left and its heightmap on the right. <br/>
+        </p>
+
+        <div class="row">
+            <video width="854" height="480" controls class="normal_video">
+                <source src="./videos/Terrain3D.mp4" type="video/mp4">
+            </video>
+
+            <img src="./images/heightmap.png" class="normal_image"/>
+        </div>
+
+        <p class="normal_text mtop">
+            Using only black and white can be problematic with negative values. <br/>
+            By using more colors we can get more information from looking at heightmaps. <br/>
+            Let's use blue and green.
+        </p>
+
+        <img src="./images/colorVisualizationFor2D.png" class="normal_image"/>
+
+        <p class="normal_text mtop">
+            We can also use this to visualize the w axis.
+        </p>
+
+        <img src="./images/colorVisualizationForW.png" class="normal_image"/>
+
+    </div>
+
+    <div class="a">
+        <span class="highlight_text">3. Creating 4D object</span>
+
+        <p class="normal_text mtop">
+            Now it's going to start getting exciting. <br/>
+            4D object that we're going to create is in some ways similar to donut. <br/>
+            That's why we will look at how to create a donut first. <br/>
+            We can create a donut by rotating circle around a line. <br/>
+            Below is how it would look in 2D visualized by color. <br/>
+            Note that object below is only half donut. (sigle color per circle used for simplicity) <br/>
+        </p>
+
+        <img src="./images/halfDonutVisualizedIn2D.png" class="normal_image"/>
+
+        <p class="normal_text mtop">
+            As we saw above 2D person would see a circle that's getting squashed and its color changes. <br/>
+            We're going to create our 4D object similarly but use spheres instead and rotate into the 4th dimension. <br/>
+            Before that let's look at what we need to do basic rotations. <br/>
+            All we need for basic rotation are 2 variables forming a plane. <br/>
+            Its nicely demonstrated on the image below.
+        </p>
+
+        <img src="./images/basicRotations.png" class="normal_image"/>
+
+        <p class="normal_text mtop">
+            Now we can start creating our 4D object. <br/>
+            Were going to do something similar to making a donut from circle. <br/>
+            But instead of circles were going to use spheres, and rotate into 4D using rotation with x and w. <br/>
+            Explore 3D scene that's illustrating half of the rotation. (signle color per sphere used for simplicity)
+        </p>
+
+        <iframe src="./spline scenes/4_d_donut_creation/index.html" frameborder=0 class="spline_scene"></iframe>
+
+        <p class="normal_text mtop">
+            Now let's go back to normal donut. <br/>
+            What would a person in 2D see when we project the donut. <br/>
+            We count that the donut was created using method above and not manipulated yet.
+        </p>
+
+        <img src="./images/projected3Ddonut.png" class="normal_image"/>
+
+        <p class="normal_text mtop">
+            When person that's in 2D saw that projected donut, <br/>
+            it looked something like rectangle with rounded corners. <br/>
+            Because we created our 4D object using similar method we can use this. <br/>
+            If this scales nicely, we should see something like cuboid (stretched cube) with rounded corners. <br/>
+
+            Please open the desktop app mentioned at the begging. <br/>
+            Then click on the button shown below to run projection of 4D object. (in app)
+        </p>
+
+        <img src="./images/0.png" class="normal_image"/>
+        <img src="./images/images from desktop app/0.png" class="normal_image mleft"/>
+
+        <p class="normal_text mtop">
+            As we saw, it looked like cuboid with rounded corners.
+        </p>
+    </div>
+
+    <div class="a">
+        <span class="highlight_text">4. Exploring 4D object</span>
+
+        <p class="normal_text mtop">
+            There are a lot of confusing things that can happen when we rotate higher dimensional objects. <br/>
+            So to get a little less confused we're going to look at rotations and their behavior first. <br/>
+            Below is table with dimensions and rotations that become possible in that dimension.
+        </p>
+
+        <img src="./images/newRotations.png" class="normal_image"/>
+
+        <p class="normal_text mtop">
+            Now let's split rotations into known and unknown. <br/>
+            Known rotations will be those that exist in our dimension. <br/>
+            And unknown rotations will be those that are in higher dimensions. <br/>
+            The number of unknown rotations will always be infinite like the number of higher dimensions. <br/>
+            For example, if we're in 2D we have 1 known rotation.
+        </p>
+
+        <img src="./images/known and unknown rotations.png" class="normal_image"/>
+
+        <p class="normal_text mtop">
+            Using known rotations on higher dimensional objects doesn't change the behavior of known rotations. <br/>
+            For example, if we're in 2D and use known rotation on 3D donut it would rotate like we would expect.
+        </p>
+
+        <img src="./images/knownRotations2D.png" class="normal_image"/>
+
+        <p class="normal_text mtop">
+             Also in the first scene that we used app to run were only known rotations inplace. <br/>
+             That's why you haven't seen any unusual motion. <br/>
+             To create higher dimensional objects in some dimension we used unknown rotations. <br/>
+             Let's look again at where we used them.
+        </p>
+
+        <img src="./images/unknownRotationsUsedForCreatingObjects.png" class="normal_image"/>
+
+        <p class="normal_text mtop">
+            Now we will use these unknown rotations to rotate the objects.  <br/>
+            We're going to start with normal donut. <br/>
+            For person in 2D it looks as if the points are cycling through the object.
+        </p>
+
+        <img src="./images/unknownRotationOnDonut.png" class="normal_image"/>
+
+        <p class="normal_text mtop">
+            Next we're going to do the same with our 4D object. <br/>
+            Click the button shown below. (in app)
+        </p>
+
+        <img src="./images/5.png" class="normal_image"/>
+        <img src="./images/images from desktop app/5.png" class="normal_image mleft"/>
+
+        <p class="normal_text mtop">
+            Another thing we can do is use reverse rendering. <br/>
+            Here, that means seeing whats furthest away first. <br/>
+            This way we can see more useful information. <br/>
+            Let's start with rendering normal 3D donut with reverse. <br/>
+            Click the button shown below. (in app)
+        </p>
+
+        <img src="./images/1.png" class="normal_image"/>
+        <img src="./images/images from desktop app/1.png" class="normal_image mleft"/>
+
+        <p class="normal_text mtop">
+            Using reverse we could see the backside and partially see front side as well when they overlapped. <br/>
+            Next were going to use reverse with our 4D object. <br/>
+            Click the button shown below. (in app)
+        </p>
+
+        <img src="./images/2.png" class="normal_image"/>
+        <img src="./images/images from desktop app/2.png" class="normal_image mleft"/>
+
+        <p class="normal_text mtop">
+            Next we'll change lighting. <br/>
+            Instead of normal lighting we can use ambient light gradients (alg). <br/>
+            With them we can get better sense of distance. <br/>
+            Image below is showing difference between directional lighting and alg.
+        </p>
+
+        <img src="./images/directionalLightAndAmbientLightGradient.png" class="normal_image"/>
+
+        <p class="normal_text mtop">
+            Actually alg that's used in the app is a little different to improve performance. <br/>
+            But it still looks similar enough. <br/>
+            Now we'll try alg with 3D donut. <br/>
+            Click the button shown below. (in app)
+        </p>
+
+        <img src="./images/3.png" class="normal_image"/>
+        <img src="./images/images from desktop app/3.png" class="normal_image mleft"/>
+        <img src="./images/images from desktop app/3_.png" class="normal_image mleft"/>
+
+        <p class="normal_text mtop">
+            Let's continue with our 4D object. <br/>
+            Click the button shown below. (in app)
+        </p>
+
+        <img src="./images/4.png" class="normal_image"/>
+        <img src="./images/images from desktop app/4.png" class="normal_image mleft"/>
+
+        <p class="normal_text mtop">
+            There's one more thing we will do in this explanation. <br/>
+            We never combined known and unknown rotations together with our 4D object. <br/>
+            Because of that we never got to see all states of our 4D object. <br/>
+            To access all rotated states of 4D object we need 3 angles. <br/>
+            Below image illustrates this.
+        </p>
+
+        <img src="./images/anglesToRotate.png" class="normal_image"/>
+
+        <p class="normal_text mtop">
+            Now, let's try it with our 4D object. <br/>
+            Click the button shown below. (in app)
+        </p>
+
+        <img src="./images/main.png" class="normal_image"/>
+        <img src="./images/images from desktop app/main0.png" class="normal_image mleft"/>
+        <img src="./images/images from desktop app/main1.png" class="normal_image mleft"/>
+        <img src="./images/images from desktop app/main1_.png" class="normal_image mleft"/>
+
+        <p class="normal_text mtop">
+            And with that, here ends the explanation. <br/> <br/>
+            <a href="https://github.com/Tucan444/Understanding-4D" class="normal_text">Github<a/>
+        </p>
+    </div>
+
+    <script src="scripts/2Dprojection.js"></script>
+</body>
+</html>
